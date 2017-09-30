@@ -1,5 +1,9 @@
+# CA
+C(ertificate) A(uthority)
+==========
 Better than VeriSign!
 
+----------
 Don't forget to edit /etc/ssl/openssl.cnf...
 BPs would probably be to use a different cnf for the CA
 
