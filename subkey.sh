@@ -30,10 +30,16 @@ sudo -u cis -i rm -rf .gnupg
 sudo -u cis -i gpg --import < priv.key
 sudo -u cis -i gpg --import < pub.key
 
-rm -f pub.key
-sudo -u cis -i gpg --armor --export-secret-subkeys ${SUBKEY}\! > priv.key
+#rm -f pub.key
+#sudo -u cis -i gpg --armor --export-secret-subkeys ${SUBKEY}\! > priv.key
+#
+#echo verifying functionality
+#sudo -u cis -i gpg --sign   key.sh
+#sudo -u cis -i gpg --verify key.sh.gpg
 
-echo verifying functionality
-sudo -u cis -i gpg --sign   key.sh
-sudo -u cis -i gpg --verify key.sh.gpg
+rm -f pub.key priv.key
+sudo -u cis -i gpg --armor --export-secret-subkeys ${SUBKEY}\! |
+cat -e |
+sed 's/\$/\\n/g' |
+xclip -selection c
 
