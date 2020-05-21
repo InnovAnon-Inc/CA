@@ -1,6 +1,32 @@
 #! /bin/bash
 set -exu
 
+# expected output:
+#
+# sudo -u momobiblebender -i gpg --export-secret-subkeys ${SUBKEY}\! > tmp-1.key
+# sudo -u cis             -i gpg --export-secret-subkeys ${SUBKEY}\! > tmp-2.key
+# ls -l tmp-1.key tmp-2.key
+#
+# -rw-r--r-- 1 momobiblebender momobiblebender  3528 May 21 14:52 tmp-2.key
+# -rw-r--r-- 1 momobiblebender momobiblebender 45836 May 21 14:52 tmp-1.key
+#
+#
+# gpg --list-secret-keys 
+#
+#/home/momobiblebender/.gnupg/pubring.kbx
+#----------------------------------------
+#sec   rsa4096 2020-05-17 [C]
+#      38BBDB7C15E81F38AAF6B7E614F31DFAC260053E
+#uid           [ultimate] Innovations Anonymous (Free Code for a Free World!) <InnovAnon-Inc@tutanota.com>
+#uid           [ultimate] Innovations Anonymous (Free Code for a Free World!) <InnovAnon-Inc@protonmail.com>
+#uid           [ultimate] [jpeg image of size 41687]
+#uid           [ultimate] Innovations Anonymous (Free Code for a Free World!) <InnovAnon-Inc@gmx.com>
+#ssb   rsa4096 2020-05-17 [S]
+#ssb   rsa4096 2020-05-17 [E]
+#ssb   rsa4096 2020-05-17 [A]
+#ssb   brainpoolP512r1 2020-05-21 [S]
+#
+
 if [ $# -eq 2 ] ; then
   KEY="$1"
   SUBKEY="$2"
@@ -21,6 +47,7 @@ sudo -u cis -i rm -rf .gnupg
 sudo -u momobiblebender -i gpg --export-secret-subkeys ${SUBKEY}\! | \
 sudo -u cis -i gpg --import
 
+trap 'rm -f pub.key priv.key' 0
 sudo -u cis -i gpg --edit-key $KEY
 sudo -u cis -i gpg --export             $KEY > pub.key
 sudo -u cis -i gpg --export-secret-keys $KEY > priv.key
@@ -37,9 +64,9 @@ sudo -u cis -i gpg --import < pub.key
 #sudo -u cis -i gpg --sign   key.sh
 #sudo -u cis -i gpg --verify key.sh.gpg
 
-rm -f pub.key priv.key
 sudo -u cis -i gpg --armor --export-secret-subkeys ${SUBKEY}\! |
 cat -e |
 sed 's/\$/\\n/g' |
 xclip -selection c
+echo secret subkey copied to clipboard: paste it into circleci env vars as GPG_KEY
 
