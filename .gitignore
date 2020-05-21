@@ -2,4 +2,8 @@ ca
 *.key
 *.priv
 *.pub
+*.gpg
+key.*
+priv.*
+pub.*
 
