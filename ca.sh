@@ -1,16 +1,16 @@
-#! /bin/sh
+#! /bin/bash
 set -exo nounset
 
-test ! -z ${MKCA+x} || MKCA=`dirname $(readlink -f $0)`
+[[ ! -z ${MKCA+x} ]] || MKCA=`dirname $(readlink -f $0)`
 export MKCA
 
-test ! -z ${CA+x} || CA=ca.innovanon.com
+[[ ! -z ${CA+x} ]] || CA=ca.innovanon.com
 
-test ! -z ${CADIR+x} || CADIR=/root
+[[ ! -z ${CADIR+x} ]] || CADIR=/root
 
 cd $CADIR
 
-test -d $CA || \
+[[ -d $CA ]] || \
 mkdir -m 0750 $CA
 
 cd $CA

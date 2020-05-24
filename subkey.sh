@@ -27,15 +27,15 @@ set -exu
 #ssb   brainpoolP512r1 2020-05-21 [S]
 #
 
-if [ $# -eq 2 ] ; then
+if [[ $# -eq 2 ]] ; then
   KEY="$1"
   SUBKEY="$2"
 else
-  if [ ! -z "${KEY+x}" ] ; then
+  if [[ ! -z "${KEY+x}" ]] ; then
     echo specify master key in env
     exit 1
   fi
-  if [ ! -z "${SUBKEY+x}" ] ; then
+  if [[ ! -z "${SUBKEY+x}" ]] ; then
     echo specify sub    key in env
     exit 1
   fi
