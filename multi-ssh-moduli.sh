@@ -1,5 +1,5 @@
 #! /bin/bash
-set -exo nounset
+set -exu
 cd "`dirname "$(readlink -f "$0")"`"
 
 # TODO start at 13

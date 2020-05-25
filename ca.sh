@@ -1,5 +1,5 @@
 #! /bin/bash
-set -exo nounset
+set -exu
 
 [[ ! -z ${MKCA+x} ]] || MKCA=`dirname $(readlink -f $0)`
 export MKCA

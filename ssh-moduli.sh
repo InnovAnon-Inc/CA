@@ -1,5 +1,5 @@
-#! /bin/sh
-set -exo nounset
+#! /bin/bash
+set -exu
 
 if   [[ $# -eq 1     ]] ; then BITS="$1"
 elif [[ -z ${BITS+x} ]] ; then BITS=16384 ; fi
