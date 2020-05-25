@@ -10,14 +10,18 @@ export MKCA
 
 cd $CADIR
 
-[[ -d $CA ]] || \
+[[ -d $CA ]] ||
 mkdir -m 0750 $CA
 
 cd $CA
+
+[[ -e openssl.cnf ]] ||
+cp -v $MKCA/openssl.cnf .
 
 mkdir certs crl newcerts
 mkdir -m 0700 private
 touch index.txt
 echo 1000 > serial
 
-$MKCA/openssl.sh $CA root
+$MKCA/openssl.sh $CA root 16384
+

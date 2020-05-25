@@ -6,4 +6,6 @@ ca
 key.*
 priv.*
 pub.*
+*.crt
+*.csr
 
