@@ -3,7 +3,7 @@ set -exu
 
 # $0 HOST OP
 
-[[ $# -eq 3 ]]
+(( $# == 3 ))
 OP=$2
 BITS=$3
 

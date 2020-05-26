@@ -3,10 +3,10 @@ set -exu
 
 DIR=`dirname "$(readlink -f "$0")"`"
 
-[[ ! -z ${CA+x} ]] ||
+[[ "${CA+x}" ]] ||
 CA=./demoCA/
 
-[[ ! -z ${BITS+x} ]] ||
+[[ "${BITS+x}" ]] ||
 BITS=16384
 
 [[ -d $CA ]] ||

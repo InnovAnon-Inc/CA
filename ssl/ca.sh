@@ -1,12 +1,12 @@
 #! /usr/bin/env bash
 set -exu
 
-[[ ! -z ${MKCA+x} ]] || MKCA=`dirname $(readlink -f $0)`
+[[ "${MKCA+x}" ]] || MKCA=`dirname $(readlink -f $0)`
 export MKCA
 
-[[ ! -z ${CA+x} ]] || CA=ca.innovanon.com
+[[ "${CA+x}" ]] || CA=ca.innovanon.com
 
-[[ ! -z ${CADIR+x} ]] || CADIR=/root
+[[ "${CADIR+x}" ]] || CADIR=/root
 
 cd $CADIR
 

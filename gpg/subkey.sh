@@ -27,21 +27,21 @@ set -exu
 #ssb   brainpoolP512r1 2020-05-21 [S]
 #
 
-if [[ $# -eq 2 ]] ; then
+if (( $# == 2 )) ; then
   KEY="$1"
   SUBKEY="$2"
 else
-  if [[ ! -z "${KEY+x}" ]] ; then
-    echo specify master key in env
-    exit 1
+  if [[ -z "${KEY+x}" ]] ; then
+    KEY=38BBDB7C15E81F38AAF6B7E614F31DFAC260053E
+    #echo specify master key in env
+    #exit 1
   fi
-  if [[ ! -z "${SUBKEY+x}" ]] ; then
-    echo specify sub    key in env
-    exit 1
+  if [[ -z "${SUBKEY+x}" ]] ; then
+    SUBKEY=53F31F9711F06089
+    #echo specify sub    key in env
+    #exit 1
   fi
 fi
-#KEY=38BBDB7C15E81F38AAF6B7E614F31DFAC260053E
-#SUBKEY=53F31F9711F06089
 
 sudo -u cis -i rm -rf .gnupg
 sudo -u momobiblebender -i gpg --export-secret-subkeys ${SUBKEY}\! | \
@@ -69,4 +69,10 @@ cat -e |
 sed 's/\$/\\n/g' |
 xclip -selection c
 echo secret subkey copied to clipboard: paste it into circleci env vars as GPG_KEY
+
+#sudo -u cis -i gpg --armor --export-secret-subkeys ${SUBKEY}\! |
+#cat -e |
+#tr \$ '\\\n' |
+#xclip -selection c
+#echo secret subkey copied to clipboard: paste it into circleci env vars as GPG_KEY
 

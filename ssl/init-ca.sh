@@ -3,10 +3,10 @@ set -exu
 
 DIR=`dirname "$(readlink -f "$0")"`"
 
-[[ ! -z ${CA+x} ]] ||
+[[ "${CA+x}" ]] ||
 CA=./demoCA/
 
-[[ ! -z ${BITS+x} ]] ||
+[[ "${BITS+x}" ]] ||
 BITS=16384
 
 [[ -d $CA ]] ||
@@ -21,7 +21,7 @@ mkdir -vm 0750 certs crl newcerts
 mkdir -vm 0700 private
 [[ -e index.txt ]] ||
 touch index.txt
-[[ ! -e serial ]] ||
+[[ -e serial ]] ||
 echo 1000 > serial
 
 $DIR/openssl.sh $CA root $BITS
