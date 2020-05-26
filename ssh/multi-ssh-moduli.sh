@@ -14,7 +14,23 @@ N=${2:-12}
 #  $DIR/ssh-moduli.sh $bits
 #done
 
+declare -a segnums
 for ((i = S; i <= N; ++i)); do
-$DIR/ssh-moduli.sh "$((2**i))"
+I="$((2 ** i))"
+$DIR/ssh-moduli.sh "$I"
+segnums+=( "$I" )
 done
+
+#segstr="${segnums[@]}"
+#comstr=${segstr// /,}
+#eval parts=( "/etc/ssh/moduli-{$comstr}" )
+parts="`parts /etc/ssh/moduli- "${segnums[@]}"`"
+
+trap "mv -v /etc/ssh/moduli.bkf /etc/ssh/moduli" 0
+mv -v /etc/ssh/moduli{,.bkf}
+
+cat $parts |
+sudo tee /etc/ssh/moduli > /dev/null
+
+#trap "rm -v /etc/ssh/moduli.bkf" 0
 

@@ -1,11 +1,21 @@
 #! /usr/bin/env bash
 set -exu
-BITS=${1:-16384}
-shift
 
-TYPE=${1:rsa}
-shift
-echo $BITS $TYPE
+#
+# usage:
+#   $0 <bits> <type> <dir> <key name>
+# defaults:
+#   $0 16384 rsa /etc/ssh ssh_host_${TYPE}_key
+
+BITS=${1:-16384}
+TYPE=${2:rsa}
+DIR=${3:/etc/ssh}
+KEY=${4:ssh_host_${TYPE}_key}
+CAKEY=$5
+
+
+ssh-keygen -b $BITS -t $TYPE -N '' -f $DIR/$KEY
+ssh-keygen -s $CAKEY
 
 exit 2
 
