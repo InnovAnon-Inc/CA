@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 set -exu
 
 [[ ! -z ${MKCA+x} ]] || MKCA=`dirname $(readlink -f $0)`

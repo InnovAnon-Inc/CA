@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 set -exu
 
 DIR=`dirname "$(readlink -f "$0")"`"
@@ -17,8 +17,9 @@ cp -v openssl.cnf $CA
 
 cd $CA
 
-mkdir -vm 0644 certs crl newcerts
+mkdir -vm 0750 certs crl newcerts
 mkdir -vm 0700 private
+[[ -e index.txt ]] ||
 touch index.txt
 [[ ! -e serial ]] ||
 echo 1000 > serial
