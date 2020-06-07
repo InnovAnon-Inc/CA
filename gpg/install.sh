@@ -3,7 +3,7 @@ set -exu
 
 DIR="`dirname "$(readlink -f "$0")"`"
 
-if (( $# == 0 )) ; then install=( siggy.sh sendkey.sh editkey.sh subkey.sh )
+if (( ! $# )) ; then install=( siggy.sh sendkey.sh editkey.sh subkey.sh )
 else                     install="$@"
 fi
 
