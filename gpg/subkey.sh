@@ -43,8 +43,10 @@ else
   fi
 fi
 
+U="`whoami`"
+
 sudo -u cis -i rm -rf .gnupg
-sudo -u momobiblebender -i gpg --export-secret-subkeys ${SUBKEY}\! | \
+sudo -u "$U" -i gpg --export-secret-subkeys ${SUBKEY}\! | \
 sudo -u cis -i gpg --import
 
 trap 'rm -f pub.key priv.key' 0
