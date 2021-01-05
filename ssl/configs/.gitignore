@@ -1,0 +1,13 @@
+codesigning-extendedvalidation/
+codesigning-individualvalidated/
+codesigning-organizationvalidated/
+personal-emailvalidated/
+personal-individualvalidated/
+personal-organizationvalidated/
+root/
+timestamping-extendedvalidation/
+timestamping/
+webserver-domainvalidated/
+webserver-extendedvalidation/
+webserver-individualvalidated/
+webserver-organizationvalidated/

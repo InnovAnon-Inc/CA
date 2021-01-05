@@ -11,8 +11,8 @@ oid_file = additional_oids
 default_ca = timestamping_ca
 
 [req]
-default_bits = 4096
-default_md = sha256
+default_bits = 16384
+default_md = sha512
 string_mask = utf8only
 prompt = no
 # Change the distinguished name section to use depending on the subordinate CA
@@ -51,7 +51,7 @@ private_key = $dir/timestampingca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for 4050 days (~135 months)  and CRLs valid for seven
 # days.
@@ -83,8 +83,8 @@ extendedKeyUsage = critical,timeStamping
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/timestampingca,caIssuers;URI:http://myca.example.com/repository/timestampingca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/timestampingca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/timestampingca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/timestampingca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/timestampingca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabCSGuidelines" to the line below.
 certificatePolicies = @polsect
@@ -101,7 +101,7 @@ countryName = supplied
 
 [timestamping_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/timestampingca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/timestampingca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [timestamping-extendedvalidation_ca]
@@ -114,7 +114,7 @@ private_key = $dir/timestamping-extendedvalidationca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for 4050 days (~135 months)  and CRLs valid for seven
 # days.
@@ -146,8 +146,8 @@ extendedKeyUsage = critical,timeStamping
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/timestamping-extendedvalidationca,caIssuers;URI:http://myca.example.com/repository/timestamping-extendedvalidationca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/timestamping-extendedvalidationca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/timestamping-extendedvalidationca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/timestamping-extendedvalidationca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/timestamping-extendedvalidationca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabEVGuidelines" to the line below.
 certificatePolicies = @polsect
@@ -168,11 +168,11 @@ countryName = supplied
 
 [timestamping-extendedvalidation_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/timestamping-extendedvalidationca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/timestamping-extendedvalidationca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [polsect]
 # Replace myCPSOID with the OID associated to your CPS.
 policyIdentifier = 1.2.3.4
 # Replace the following URL with the one pointing to your CPS.
-CPS.1 = "http://myca.example.com/repository/cps.pdf"
+CPS.1 = "http://lmaddox.chickenkiller.com/repository/cps.pdf"

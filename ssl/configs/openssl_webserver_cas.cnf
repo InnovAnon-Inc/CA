@@ -11,8 +11,8 @@ oid_file = additional_oids
 default_ca = webserver-domainvalidated_ca
 
 [req]
-default_bits = 4096
-default_md = sha256
+default_bits = 16384
+default_md = sha512
 string_mask = utf8only
 distinguished_name = req_dn
 
@@ -44,7 +44,7 @@ private_key = $dir/webserver-domainvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -72,12 +72,12 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,serverAuth
 # Replace the domain names here
-subjectAltName = critical,DNS:example.com,DNS:www.example.com
+subjectAltName = critical,DNS:lmaddox.chickenkiller.com,DNS:www.lmaddox.chickenkiller.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/webserver-domainvalidatedca,caIssuers;URI:http://myca.example.com/repository/webserver-domainvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/webserver-domainvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/webserver-domainvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-domainvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/webserver-domainvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabBRDomainValidated" to the line below.
 certificatePolicies = @polsect
@@ -91,7 +91,7 @@ certificatePolicies = @polsect
 
 [webserver-domainvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/webserver-domainvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-domainvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [webserver-individualvalidated_ca]
@@ -104,7 +104,7 @@ private_key = $dir/webserver-individualvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -132,11 +132,11 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,serverAuth
 # Replace the domain names here
-subjectAltName = critical,DNS:example.com,DNS:www.example.com
+subjectAltName = critical,DNS:lmaddox.chickenkiller.com,DNS:www.lmaddox.chickenkiller.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/webserver-individualvalidatedca,caIssuers;URI:http://myca.example.com/repository/webserver-individualvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/webserver-individualvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/webserver-individualvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-individualvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/webserver-individualvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabBRIndividualValidated" to the line below.
 certificatePolicies = @polsect
@@ -155,7 +155,7 @@ countryName = supplied
 
 [webserver-individualvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/webserver-individualvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-individualvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [webserver-organizationvalidated_ca]
@@ -168,7 +168,7 @@ private_key = $dir/webserver-organizationvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -196,12 +196,12 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,serverAuth
 # Replace the domain names here
-subjectAltName = critical,DNS:example.com,DNS:www.example.com
+subjectAltName = critical,DNS:lmaddox.chickenkiller.com,DNS:www.lmaddox.chickenkiller.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/webserver-organizationvalidatedca,caIssuers;URI:http://myca.example.com/repository/webserver-organizationvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/webserver-organizationvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/webserver-organizationvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-organizationvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/webserver-organizationvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabBROrganizationValidated" to the line below.
 certificatePolicies = @polsect
@@ -220,7 +220,7 @@ countryName = supplied
 
 [webserver-organizationvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/webserver-organizationvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-organizationvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [webserver-extendedvalidation_ca]
@@ -233,7 +233,7 @@ private_key = $dir/webserver-extendedvalidationca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -268,12 +268,12 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,serverAuth
 # Replace the domain names here
-subjectAltName = critical,DNS:example.com,DNS:www.example.com
+subjectAltName = critical,DNS:lmaddox.chickenkiller.com,DNS:www.lmaddox.chickenkiller.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/webserver-extendedvalidationca,caIssuers;URI:http://myca.example.com/repository/webserver-extendedvalidationca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/webserver-extendedvalidationca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/webserver-extendedvalidationca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-extendedvalidationca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/webserver-extendedvalidationca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabEVGuidelines" to the line below.
 certificatePolicies = @polsect
@@ -297,11 +297,11 @@ countryName = supplied
 
 [webserver-extendedvalidation_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/webserver-extendedvalidationca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/webserver-extendedvalidationca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [polsect]
 # Replace myCPSOID with the OID associated to your CPS.
 policyIdentifier = 1.2.3.4
 # Replace the following URL with the one pointing to your CPS.
-CPS.1 = "http://myca.example.com/repository/cps.pdf"
+CPS.1 = "http://lmaddox.chickenkiller.com/repository/cps.pdf"

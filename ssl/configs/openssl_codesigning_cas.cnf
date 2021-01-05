@@ -11,8 +11,8 @@ oid_file = additional_oids
 default_ca = codesigning-individualvalidated_ca
 
 [req]
-default_bits = 4096
-default_md = sha256
+default_bits = 16384
+default_md = sha512
 string_mask = utf8only
 distinguished_name = req_dn
 
@@ -44,7 +44,7 @@ private_key = $dir/codesigning-individualvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -74,8 +74,8 @@ extendedKeyUsage = codeSigning
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/codesigning-individualvalidatedca,caIssuers;URI:http://myca.example.com/repository/codesigning-individualvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/codesigning-individualvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/codesigning-individualvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/codesigning-individualvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/codesigning-individualvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabCSGuidelines" to the line below.
 certificatePolicies = @polsect
@@ -92,7 +92,7 @@ countryName = supplied
 
 [codesigning-individualvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/codesigning-individualvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/codesigning-individualvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [codesigning-organizationalvalidated_ca]
@@ -105,7 +105,7 @@ private_key = $dir/codesigning-organizationalvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -135,8 +135,8 @@ extendedKeyUsage = codeSigning
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/codesigning-organizationalvalidatedca,caIssuers;URI:http://myca.example.com/repository/codesigning-organizationalvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/codesigning-organizationalvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/codesigning-organizationalvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/codesigning-organizationalvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/codesigning-organizationalvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabCSGuidelines" to the line below.
 certificatePolicies = @polsect
@@ -153,7 +153,7 @@ countryName = supplied
 
 [codesigning-organizationalvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/codesigning-organizationalvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/codesigning-organizationalvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [codesigning-extendedvalidation_ca]
@@ -166,7 +166,7 @@ private_key = $dir/codesigning-extendedvalidationca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -196,8 +196,8 @@ extendedKeyUsage = codeSigning
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/codesigning-extendedvalidationca,caIssuers;URI:http://myca.example.com/repository/codesigning-extendedvalidationca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/codesigning-extendedvalidationca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/codesigning-extendedvalidationca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/codesigning-extendedvalidationca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/codesigning-extendedvalidationca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabEVGuidelines" to the line below.
 certificatePolicies = @polsect
@@ -218,11 +218,11 @@ countryName = supplied
 
 [codesigning-extendedvalidation_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/codesigning-extendedvalidationca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/codesigning-extendedvalidationca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [polsect]
 # Replace myCPSOID with the OID associated to your CPS.
 policyIdentifier = 1.2.3.4
 # Replace the following URL with the one pointing to your CPS.
-CPS.1 = "http://myca.example.com/repository/cps.pdf"
+CPS.1 = "http://lmaddox.chickenkiller.com/repository/cps.pdf"

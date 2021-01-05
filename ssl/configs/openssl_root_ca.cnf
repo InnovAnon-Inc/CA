@@ -7,9 +7,9 @@
 
 # Replace the URLs with the paths to your OCSP responder and to the root CA
 # certificate/current CRL.
-OCSP_RESPONDER = http://myca.example.com/ocsp/rootca
-ROOT_CA_CERTIFICATE = http://myca.example.com/repository/rootca.cer
-ROOT_CA_CRL = http://myca.example.com/repository/rootca.crl
+OCSP_RESPONDER = http://lmaddox.chickenkiller.com/ocsp/rootca
+ROOT_CA_CERTIFICATE = http://lmaddox.chickenkiller.com/repository/rootca.cer
+ROOT_CA_CRL = http://lmaddox.chickenkiller.com/repository/rootca.crl
 
 oid_file = additional_oids
 
@@ -17,8 +17,8 @@ oid_file = additional_oids
 default_ca = root_ca
 
 [req]
-default_bits = 4096
-default_md = sha256
+default_bits = 16384
+default_md = sha512
 string_mask = utf8only
 prompt = no
 # Change the distinguished name section to use depending on the subordinate CA
@@ -35,7 +35,7 @@ private_key = $dir/rootca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Though there is no explicit provision for the duration of intermediate CA
 # certificates, rotating them every five years is a good practice.
@@ -327,7 +327,7 @@ commonName = supplied
 # Replace myCPSOID with the OID associated to your CPS.
 policyIdentifier = 1.2.3.4
 # Replace the following URL with the one pointing to your CPS.
-CPS.1 = "http://myca.example.com/repository/cps.pdf"
+CPS.1 = "http://lmaddox.chickenkiller.com/repository/cps.pdf"
 
 [root_ca_crl_extensions]
 authorityInfoAccess = caIssuers;URI:${ROOT_CA_CERTIFICATE}

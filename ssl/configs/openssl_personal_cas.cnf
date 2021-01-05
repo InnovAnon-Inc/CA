@@ -11,8 +11,8 @@ oid_file = additional_oids
 default_ca = personal-emailvalidated_ca
 
 [req]
-default_bits = 4096
-default_md = sha256
+default_bits = 16384
+default_md = sha512
 string_mask = utf8only
 distinguished_name = req_dn
 
@@ -39,7 +39,7 @@ private_key = $dir/personal-emailvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -67,12 +67,12 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,emailProtection
 # Replace the e-mail address here
-subjectAltName = critical,email:example@example.com
+subjectAltName = critical,email:InnovAnon-Inc@protonmail.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/personal-emailvalidatedca,caIssuers;URI:http://myca.example.com/repository/personal-emailvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/personal-emailvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/personal-emailvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/personal-emailvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/personal-emailvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabBRDomainValidated" to the line below.
 certificatePolicies = @polsect
@@ -82,7 +82,7 @@ certificatePolicies = @polsect
 
 [personal-emailvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/personal-emailvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/personal-emailvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [personal-individualvalidated_ca]
@@ -95,7 +95,7 @@ private_key = $dir/personal-individualvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -123,12 +123,12 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,emailProtection,adobeAuthenticDocumentsTrust,kpDocumentSigning
 # Replace the e-mail address here
-subjectAltName = email:example@example.com
+subjectAltName = email:InnovAnon-Inc@protonmail.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/personal-individualvalidatedca,caIssuers;URI:http://myca.example.com/repository/personal-individualvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/personal-individualvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/personal-individualvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/personal-individualvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/personal-individualvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabBRIndividualValidated" to the line below.
 certificatePolicies = @polsect
@@ -143,7 +143,7 @@ countryName = supplied
 
 [personal-individualvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/personal-individualvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/personal-individualvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [personal-organizationvalidated_ca]
@@ -156,7 +156,7 @@ private_key = $dir/personal-organizationvalidatedca.pvk
 new_certs_dir = $dir/newcerts
 
 # Choose SHA-256 as the hash algorithm.
-default_md = sha256
+default_md = sha512
 
 # Make certificates valid for a year and CRLs valid for seven days.
 default_days = 365
@@ -184,12 +184,12 @@ basicConstraints = critical,CA:FALSE
 keyUsage = critical,digitalSignature,keyEncipherment
 extendedKeyUsage = clientAuth,emailProtection,adobeAuthenticDocumentsTrust,kpDocumentSigning
 # Replace the e-mail address here
-subjectAltName = email:example@example.com
+subjectAltName = email:InnovAnon-Inc@protonmail.com
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always
 # Replace the URLs here
-authorityInfoAccess = OCSP;URI:http://myca.example.com/ocsp/personal-organizationvalidatedca,caIssuers;URI:http://myca.example.com/repository/personal-organizationvalidatedca.cer
-crlDistributionPoints = URI:http://myca.example.com/repository/personal-organizationvalidatedca.crl
+authorityInfoAccess = OCSP;URI:http://lmaddox.chickenkiller.com/ocsp/personal-organizationvalidatedca,caIssuers;URI:http://lmaddox.chickenkiller.com/repository/personal-organizationvalidatedca.cer
+crlDistributionPoints = URI:http://lmaddox.chickenkiller.com/repository/personal-organizationvalidatedca.crl
 # If you are following the validation practices mandated by the CA/Browser
 # Forum, add "cabBROrganizationValidated" to the line below.
 certificatePolicies = @polsect
@@ -204,11 +204,11 @@ countryName = supplied
 
 [personal-organizationvalidated_crl_extensions]
 # Replace the URL here
-authorityInfoAccess = caIssuers;URI:http://myca.example.com/repository/personal-organizationvalidatedca.cer
+authorityInfoAccess = caIssuers;URI:http://lmaddox.chickenkiller.com/repository/personal-organizationvalidatedca.cer
 authorityKeyIdentifier = keyid:always
 # ----------------------------------------------------------------------------
 [polsect]
 # Replace myCPSOID with the OID associated to your CPS.
 policyIdentifier = 1.2.3.4
 # Replace the following URL with the one pointing to your CPS.
-CPS.1 = "http://myca.example.com/repository/cps.pdf"
+CPS.1 = "http://lmaddox.chickenkiller.com/repository/cps.pdf"
