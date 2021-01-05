@@ -8,6 +8,16 @@ priv.*
 pub.*
 *.crt
 *.csr
+*.pvk
+*.cer
+*.req
+index
+index.attr
+index.attr.old
+index.old
+newcerts/
+serial
+serial.old
 
 # Miserable desktop garbage
 
