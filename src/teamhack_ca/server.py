@@ -6,7 +6,7 @@ from subprocess       import run
 #from teamhack_db.sql  import insert
 #from teamhack_db.util import get_name, get_record_type
 
-def create_app(conn):
+def create_app():
   app = Flask(__name__)
   #api = Api(app)
 
@@ -81,11 +81,11 @@ def create_app(conn):
 
   return app
 
-def start_server(conn, host="0.0.0.0", port=5002, *args, **kwargs):
+def start_server(host="0.0.0.0", port=5002, *args, **kwargs):
   # TODO init_ca
   # TODO root_ca
-  run(['bin/init_ca'])
-  run(['bin/root_ca'])
-  app = create_app(conn)
+  run(['bin/init_ca'], check=True)
+  run(['bin/root_ca'], check=True)
+  app = create_app()
   app.run(debug=True, host=host, port=port, *args, **kwargs)
 
