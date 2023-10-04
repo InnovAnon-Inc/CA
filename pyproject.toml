@@ -1,5 +1,5 @@
 [project]
-name = ""
+name = "teamhack_ca"
 # TODO version needs to be gotten from environment
 #version = "1.0.0"
 dynamic = ["version"]
