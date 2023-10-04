@@ -10,13 +10,16 @@ FROM python:latest
 RUN pip install teamhack_ca
 
 WORKDIR  /var/teamhack
-VOLUME ["/var/teamhack/etc"]
+VOLUME ["/var/teamhack/certs"]
+VOLUME ["/var/teamhack/crl"]
+VOLUME ["/var/teamhack/csr"]
+VOLUME ["/var/teamhack/private"]
 
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
   "-m",              \
-  "teamhack_ca"    \
+  "teamhack_ca"      \
 ]
 
 EXPOSE 5002/tcp

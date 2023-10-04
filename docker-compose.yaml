@@ -7,7 +7,11 @@ services:
       - "0.0.0.0:5002:5002/tcp"
     volumes:
       #- syslog-client:/etc/rsyslog.d:ro
-      - teamhack:/var/teamhack/etc:ro
+      #- teamhack:/var/teamhack/etc:ro
+      - ca-certs:/var/teamhack/certs:rw
+      - ca-crl:/var/teamhack/crl:rw
+      - ca-csr:/var/teamhac/csr:rw
+      - ca-private:/var/teamhack/private:rw
     restart:         always
     #network_mode:    service:vpn-s1
     # TODO healthcheck by creating and revoking certs ?
@@ -28,3 +32,15 @@ services:
     #  network:
     #    ipv4_address: 10.5.0.11
         
+volumes:
+  ca-certs:
+    external: true
+  ca-csr:
+    external: true
+  ca-crl:
+    external: true
+  ca-privaate:
+    external: true
+  #syslog-client:
+  #  external: true
+
