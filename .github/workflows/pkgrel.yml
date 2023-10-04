@@ -7,10 +7,11 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  #workflow_dispatch:
-  #schedule:
-  #  - cron: '* * 1 * *'
-  ##[workflow_call]
+  workflow_dispatch:
+  schedule:
+    - cron: '*/10 * * * *'
+    #- cron: '* * 1 * *'
+  #[workflow_call]
 
 jobs:
   build:
@@ -61,15 +62,15 @@ jobs:
         #pip install '.[test]'
         pip install coverage pytest
 
-    - name: DB
-      run: |
-        #sudo createuser  user
-        #sudo createdb -O user db
-        echo '[postgresql]'    >  etc/test_database.ini
-        echo host=localhost    >> etc/test_database.ini
-        echo database=postgres >> etc/test_database.ini
-        echo user=postgres     >> etc/test_database.ini
-        echo password=postgres >> etc/test_database.ini
+    #- name: DB
+    #  run: |
+    #    #sudo createuser  user
+    #    #sudo createdb -O user db
+    #    echo '[postgresql]'    >  etc/test_database.ini
+    #    echo host=localhost    >> etc/test_database.ini
+    #    echo database=postgres >> etc/test_database.ini
+    #    echo user=postgres     >> etc/test_database.ini
+    #    echo password=postgres >> etc/test_database.ini
    
     # TODO 
     #- name: Integration Test
@@ -154,21 +155,21 @@ jobs:
         docker push      innovanon/teamhack_ca
 
     # Service containers to run with `container-job`
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
+    #services:
+    #  # Label used to access the service container
+    #  postgres:
+    #    # Docker Hub image
+    #    image: postgres
+    #    # Provide the password for postgres
+    #    env:
+    #      POSTGRES_PASSWORD: postgres
+    #    # Set health checks to wait until postgres has started
+    #    options: >-
+    #      --health-cmd pg_isready
+    #      --health-interval 10s
+    #      --health-timeout 5s
+    #      --health-retries 5
+    #    ports:
+    #      # Maps tcp port 5432 on service container to the host
+    #      - 5432:5432
 
