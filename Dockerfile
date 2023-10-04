@@ -9,6 +9,9 @@ FROM python:latest
 #  /tmp/dist/
 RUN pip install teamhack_ca
 
+COPY ./bin \
+     ./lib \
+      /var/teamhack/
 WORKDIR  /var/teamhack
 VOLUME ["/var/teamhack/certs"]
 VOLUME ["/var/teamhack/crl"]

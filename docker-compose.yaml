@@ -39,7 +39,7 @@ volumes:
     external: true
   ca-crl:
     external: true
-  ca-privaate:
+  ca-private:
     external: true
   #syslog-client:
   #  external: true
