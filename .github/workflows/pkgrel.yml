@@ -3,14 +3,14 @@ permissions:
   contents: write
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '* * 1 * *'
-  #[workflow_call]
   push:
     branches: [ "main", "master", "HEAD", "origin", "default" ]
   pull_request:
     branches: [ "main", "master", "HEAD", "origin", "default" ]
+  workflow_dispatch:
+  schedule:
+    - cron: '* * 1 * *'
+  #[workflow_call]
 
 
 jobs:

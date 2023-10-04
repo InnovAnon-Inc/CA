@@ -77,7 +77,7 @@ def create_app(conn):
 
     run(['bin/revoke', ca, site], check=True)
 
-    return keypair(name
+    return keypair(name)
 
   return app
 
