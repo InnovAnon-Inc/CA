@@ -1,8 +1,0 @@
-flask-restful
-
-[rel]
-twine
-
-[test]
-coverage
-pytest
