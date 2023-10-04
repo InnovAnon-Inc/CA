@@ -8,9 +8,9 @@ on:
     - cron: '* * 1 * *'
   #[workflow_call]
   push:
-    branches: [ "main", "master", "HEAD", "origin" ]
+    branches: [ "main", "master", "HEAD", "origin", "default" ]
   pull_request:
-    branches: [ "main", "master", "HEAD", "origin" ]
+    branches: [ "main", "master", "HEAD", "origin", "default" ]
 
 jobs:
   build:
