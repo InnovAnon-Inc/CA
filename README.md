@@ -1,4 +1,4 @@
-# CA
+# CA (teamhack_ca) [![CA](https://github.com/InnovAnon-Inc/CA/actions/workflows/pkgrel.yml/badge.svg)](https://github.com/InnovAnon-Inc/CA/actions/workflows/pkgrel.yml)
 C(ertificate) A(uthority)
 ==========
 
