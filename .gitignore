@@ -11,4 +11,5 @@ private/*.ini
 private/*.key
 private/randfile
 private/serial
+src/teamhack_ca.egg-info/
 
