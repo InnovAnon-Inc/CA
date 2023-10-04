@@ -1,0 +1,78 @@
+[ ca ]
+default_ca        = CA_default
+
+[ CA_default ]
+dir               = .          
+database          = ${CA_DATABASE}
+new_certs_dir     = ./certs   
+certificate       = ${CA_CERTIFICATE}
+serial            = ./private/serial
+rand_serial       = yes
+private_key       = ${CA_KEY}
+RANDFILE          = ./private/randfile
+default_days      = 3655
+default_crl_days  = 30 
+default_md        = ${CA_MD}
+policy            = policy_any
+email_in_dn       = no
+name_opt          = ca_default
+cert_opt          = ca_default
+unique_subject    = no
+copy_extensions   = copyall
+x509_extensions   = v3_intermediate_ca
+crl_extensions    = crl_ext
+
+[ policy_strict ]
+countryName            = match
+stateOrProvinceName    = match
+organizationName       = match
+organizationalUnitName = optional
+commonName             = supplied
+emailAddress           = optional
+
+[ policy_any ]
+countryName            = supplied
+stateOrProvinceName    = optional
+organizationName       = optional
+organizationalUnitName = optional
+commonName             = supplied
+emailAddress           = optional
+
+[ req ]
+prompt              = no
+default_bits        = ${CA_BITS}
+default_days        = 375
+default_md          = ${CA_MD}
+string_mask         = utf8only
+distinguished_name  = req_distinguished_name
+# Extension to add when the -x509 option is used.
+x509_extensions     = v3_intermediate_ca
+
+[ req_distinguished_name ]
+# Country Name (2 letter code)
+C = US
+# State or Province Name
+ST = Texas
+# Locality Name
+L = San Antonio
+# Organization Name
+O = InnovAnon, Inc.
+# Organizational Unit Name
+OU = ${CA_OU}
+# Common Name
+CN = InnovAnon, Inc. ${CA_OU} Certification Intermediate
+# Email Address
+emailAddress = InnovAnon-Inc@gmx.com
+
+[ v3_intermediate_ca ]
+# Extensions for a typical intermediate CA (man x509v3_config).
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true, pathlen:0
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+crlDistributionPoints = ${CA_crlDistributionPoints}
+
+[ crl_ext ]
+# Extension for CRLs (man x509v3_config).
+authorityKeyIdentifier = keyid:always,issuer:always
+
