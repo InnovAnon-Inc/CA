@@ -1,3 +1,15 @@
+FROM ubuntu:latest as build
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt update              \
+&&  apt full-upgrade -y     \
+&&  apt install      -y     \
+    --mark-auto             \
+    --no-install-recommends \
+    gettext-base            \
+&&  rm -rf /var/lib/apt/lists/*
+
 FROM python:latest
 
 #COPY ./dist/         \
@@ -25,6 +37,8 @@ RUN command -v bin/intermediate_ca
 RUN command -v bin/site
 RUN command -v bin/revoke
 RUN command -v bin/nuke
+
+COPY --from=build /usr/bin/envsubst /usr/bin/
 
 ENV TEAMHACK_DOCKER=1
 ENTRYPOINT [         \
