@@ -3,15 +3,16 @@ permissions:
   contents: write
 
 on:
+  workflow_dispatch:
+  #[workflow_call]
+  schedule:
+    - cron: '* * */1 * *'
+    #- cron: '* * 1 * *'
+    #- cron: '*/1 * * * *'
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:
-  schedule:
-    - cron: '*/1 * * * *'
-    #- cron: '* * 1 * *'
-  #[workflow_call]
 
 jobs:
   build:
