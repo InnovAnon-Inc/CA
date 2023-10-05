@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 set -euxo nounset
 
-if (( ! UID )) ; then
+if (( ! UID )) &&
+   (( ! ${TEAMHACK_DOCKER:-0} )) ; then
 echo de-escalate privileges 1>&2
 exit 1
 fi

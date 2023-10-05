@@ -26,6 +26,7 @@ RUN command -v bin/site
 RUN command -v bin/revoke
 RUN command -v bin/nuke
 
+ENV TEAMHACK_DOCKER=1
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
