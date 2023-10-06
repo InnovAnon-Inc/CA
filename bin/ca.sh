@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-set -euxo nounset
+set -euxo nounset -o pipefail
 
 if (( ! UID )) &&
    (( ! ${TEAMHACK_DOCKER:-0} )) ; then
