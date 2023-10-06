@@ -33,11 +33,7 @@ services:
     #    ipv4_address: 10.5.0.11
         
 volumes:
-  ca-certs:
-    external: true
   ca-csr:
-    external: true
-  ca-crl:
     external: true
   ca-private:
     external: true
