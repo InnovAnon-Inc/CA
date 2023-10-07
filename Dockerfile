@@ -42,6 +42,7 @@ COPY --from=build /usr/bin/envsubst /usr/bin/
 
 ENV TEAMHACK_DOCKER=1
 RUN test -x /usr/bin/env
+RUN command -v python
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
