@@ -41,6 +41,7 @@ RUN command -v bin/nuke
 COPY --from=build /usr/bin/envsubst /usr/bin/
 
 ENV TEAMHACK_DOCKER=1
+RUN test -x /usr/bin/env
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
